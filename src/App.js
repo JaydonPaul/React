@@ -6,10 +6,21 @@ class App extends React.Component {
         this.state = {
             count: 0
         }
+
+        this.handleClick = this.handleClick.bind(this)
+        this.halve = this.halve.bind(this)
     }
 
     handleClick() {
-        console.log("Changed")
+        this.setState(prevState =>{ 
+            return {count: prevState.count +1}
+        })
+    } 
+
+    halve() {
+        this.setState(prevState =>{
+            return {count: prevState.count / 2}
+        })
     }
 
     render() {
@@ -17,6 +28,8 @@ class App extends React.Component {
             <div>
                 <h1>{this.state.count}</h1>
                 <button onClick={this.handleClick}>Changed!</button>
+                <button onClick={this.halve}>Changed!</button>
+
             </div>
         )
     }
